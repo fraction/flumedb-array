@@ -22,7 +22,7 @@ npm install flumelog-array
 const Log = require('flumelog-array')
 const Flume = require('flumedb')
 
-var db = Flume(Log())
+const db = Flume(Log())
 
 db.append({foo: 1}, function (err, seq) {
   if (err) throw err
