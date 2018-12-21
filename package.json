@@ -13,7 +13,6 @@
     "pull-cursor-array": "^2.0.0"
   },
   "devDependencies": {
-    "flumedb": "^1.0.1",
     "test-flumelog": "^1.0.0"
   }
 }
