@@ -35,11 +35,19 @@ module.exports = () => {
       // Return the new value of `since` when the append operation completes.
       cb(null, since.value)
     },
-    del: (seq, cb) => {
+    del: (seqs, cb) => {
       // This is experimental and unsupported by flumedb.
       // If you're learning flumedb, you should ignore this. :)
-      delete log[seq]
-      cb(null, seq)
+      if (Array.isArray(seqs) === false) {
+        // The `seqs` argument may be a single value or an array.
+        // To minimize complexity, this ensures `seqs` is always an array.
+        seqs = [ seqs ]
+      }
+
+      seqs.forEach((seq) => { delete log[seq] })
+
+      // Just return, no `seq` necessary because that hasn't changed.
+      cb(null)
     },
     dir: null,
     get: (seq, cb) => {
