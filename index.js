@@ -55,6 +55,9 @@ module.exports = () => {
       // Note that this returns `undefined` when `seq` isn't a valid index.
       cb(null, log[seq])
     },
+    put: (key, val) => {
+      log[key] = val
+    },
     since: since,
     stream: (opts) => createStream(opts)
   }
